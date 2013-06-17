@@ -2,7 +2,7 @@ var CUBRIDClient = require('./testSetup/test_Setup').createDefaultCUBRIDDemodbCo
 //TODO Update this with your own async installation path
   //Async = require('c:/Program Files (x86)/nodejs/node_modules/async/index.js'),
   //Async = require('C:/Documents and Settings/Ovidiu/node_modules/async/index.js'),
-  Async = require('/home/travis/.nvm/v0.6.21/lib/node_modules/async'),
+  Async = require('async'),
   Helpers = require('../../src/utils/Helpers'),
   Result2Array = require('../../src/resultset/Result2Array');
 
