@@ -8,6 +8,8 @@ before_script:
   - echo 'yes' | sudo add-apt-repository ppa:cubrid/cubrid
   - sudo apt-get update
   - sudo apt-get install cubrid
+  - cat /var/opt/cubrid/service.cubrid
   - /etc/profile.d/cubrid.sh
   - sudo apt-get install cubrid-demodb
+  - cat /var/opt/cubrid/service.cubrid
   - "npm install -g nodeunit"
