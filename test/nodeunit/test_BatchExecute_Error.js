@@ -1,6 +1,5 @@
 var CUBRIDClient = require('./testSetup/test_Setup').createDefaultCUBRIDDemodbConnection,
-  Helpers = require('../src/utils/Helpers'),
-  assert = require('assert');
+  Helpers = require('../../src/utils/Helpers');
 
 function errorHandler(err) {
   throw err.message;
