@@ -5,7 +5,8 @@ node_js:
   - 0.6
   
 before_script:
-  - echo '0644' | hostname | sed 's/^/127.0.0.1 /g' | cat - /etc/hosts > /tmp/etchoststemp && mv /tmp/etchoststemp /etc/hosts
+  - cat /etc/hosts
+  - sudo hostname localhost
   - echo 'yes' | sudo add-apt-repository ppa:cubrid/cubrid
   - sudo apt-get update
   - sudo apt-get install cubrid
