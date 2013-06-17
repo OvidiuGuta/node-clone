@@ -14,4 +14,6 @@ before_script:
   - /etc/profile.d/cubrid.sh
   - sudo apt-get install cubrid-demodb
   - cat /var/opt/cubrid/tmp/service.cubrid
-  - "npm install -g nodeunit"
+  - npm install -g nodeunit
+  - npm install -g async
+  - npm install -g generic-pool
