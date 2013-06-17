@@ -40,6 +40,7 @@ exports['test_BatchExecute_Error'] = function (test) {
 		  } else {
 			Helpers.logInfo('Connection closed.');
 			Helpers.logInfo('Test passed.');
+			test.done();
 		}
       });
     });
