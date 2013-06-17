@@ -11,5 +11,5 @@ before_script:
   - cat /var/opt/cubrid/service.cubrid
   - /etc/profile.d/cubrid.sh
   - sudo apt-get install cubrid-demodb
-  - cat /var/opt/cubrid/service.cubrid
+  - cat /var/opt/cubrid/tmp/service.cubrid
   - "npm install -g nodeunit"
