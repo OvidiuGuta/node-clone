@@ -2,8 +2,6 @@
 2012-2013<br/>
 http://www.cubrid.org<br/>
 
-[![Build Status](https://travis-ci.org/CUBRID/node-cubrid.png)](https://travis-ci.org/CUBRID/node-cubrid)
-
 Introduction
 =======================================================================================================
 The <b>CUBRID</b> node.js driver is an open-source project with the goal of implementing a 100% native node.js driver
