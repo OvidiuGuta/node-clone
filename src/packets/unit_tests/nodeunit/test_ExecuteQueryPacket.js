@@ -14,12 +14,12 @@ exports['test_ExecuteQueryPacket'] = function (test) {
   var executeQueryPacket = new ExecuteQueryPacket(options);
 
   executeQueryPacket.write(packetWriter);
-  test.equal(packetWriter._toBuffer()[3], 87); //total length
+  test.equal(packetWriter._toBuffer()[3], 87); // Total length
 
-  test.equal(packetWriter._toBuffer()[4], 0); //casInfo
-  test.equal(packetWriter._toBuffer()[5], 255); //casInfo
-  test.equal(packetWriter._toBuffer()[6], 255); //casInfo
-  test.equal(packetWriter._toBuffer()[7], 255); //casInfo
+  test.equal(packetWriter._toBuffer()[4], 0); // Casinfo
+  test.equal(packetWriter._toBuffer()[5], 255); // Casinfo
+  test.equal(packetWriter._toBuffer()[6], 255); // Casinfo
+  test.equal(packetWriter._toBuffer()[7], 255); // Casinfo
 
   test.equal(packetWriter._toBuffer()[8], CAS.CASFunctionCode.CAS_FC_PREPARE_AND_EXECUTE);
   test.equal(packetWriter._toBuffer()[16], 3);
@@ -43,7 +43,7 @@ exports['test_ExecuteQueryPacket'] = function (test) {
                                  0, 0, 2, 83, 0, 0, 0, 0, 7, 83, 105, 108, 118, 101, 114, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 71, 0, 0, 0, 0, 5,
                                  71, 111, 108, 100, 0]));
 
-  var resultSet = executeQueryPacket.parse(packetReader);
+  var resultSet = executeQueryPacket.parse(packetReader).resultSet;
   test.equal(resultSet, '{"ColumnNames":["s_name","f_name"],"ColumnDataTypes":["Char","String"],"RowsCount":6,"ColumnValues":[["X","Mixed"],["W","Woman"],["M","Man"],["B","Bronze"],["S","Silver"],["G","Gold"]]}');
   console.log('Unit test ended OK.');
   test.done();

@@ -29,14 +29,14 @@ exports['test_FetchPacket'] = function (test) {
                                  4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 66, 0, 0, 0, 0, 7, 66, 114, 111, 110, 122, 101, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                  0, 0, 2, 83, 0, 0, 0, 0, 7, 83, 105, 108, 118, 101, 114, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 71, 0, 0, 0, 0, 5,
                                  71, 111, 108, 100, 0]));
-  var resultSet = executeQueryPacket.parse(packetReader);
+  var resultSet = executeQueryPacket.parse(packetReader).resultSet;
   test.equal(resultSet, '{"ColumnNames":["s_name","f_name"],"ColumnDataTypes":["Char","String"],"RowsCount":6,"ColumnValues":[["X","Mixed"],["W","Woman"],["M","Man"],["B","Bronze"],["S","Silver"],["G","Gold"]]}');
 
   packetReader = new PacketReader();
   packetWriter = new PacketWriter();
   var fetchPacket = new FetchPacket(options);
   fetchPacket.write(packetWriter, executeQueryPacket);
-  test.equal(packetWriter._toBuffer()[3], 38); //total length
+  test.equal(packetWriter._toBuffer()[3], 38); // Total length
   test.equal(packetWriter._toBuffer()[8], CAS.CASFunctionCode.CAS_FC_FETCH);
   test.equal(packetWriter._toBuffer()[16], 4);
   test.equal(packetWriter._toBuffer()[24], 7);
@@ -50,10 +50,10 @@ exports['test_FetchPacket'] = function (test) {
                                  0, 0, 0, 0]));
   fetchPacket.parse(packetReader, executeQueryPacket);
 
-  test.equal(fetchPacket.casInfo[0], 0); //casInfo
-  test.equal(fetchPacket.casInfo[1], 255); //casInfo
-  test.equal(fetchPacket.casInfo[2], 255); //casInfo
-  test.equal(fetchPacket.casInfo[3], 255); //casInfo
+  test.equal(fetchPacket.casInfo[0], 0); // Casinfo
+  test.equal(fetchPacket.casInfo[1], 255); // Casinfo
+  test.equal(fetchPacket.casInfo[2], 255); // Casinfo
+  test.equal(fetchPacket.casInfo[3], 255); // Casinfo
 
   test.equal(fetchPacket.responseCode, 0);
   test.equal(fetchPacket.errorCode, 0);

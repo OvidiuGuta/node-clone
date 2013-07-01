@@ -12,12 +12,12 @@ exports['test_LOBNewPacket'] = function (test) {
   var lobnewPacket = new LOBNewPacket(options);
 
   lobnewPacket.write(packetWriter);
-  test.equal(packetWriter._toBuffer()[3], 9); //total length
+  test.equal(packetWriter._toBuffer()[3], 9); // Total length
 
-  test.equal(packetWriter._toBuffer()[4], 0); //casInfo
-  test.equal(packetWriter._toBuffer()[5], 255); //casInfo
-  test.equal(packetWriter._toBuffer()[6], 255); //casInfo
-  test.equal(packetWriter._toBuffer()[7], 255); //casInfo
+  test.equal(packetWriter._toBuffer()[4], 0); // Casinfo
+  test.equal(packetWriter._toBuffer()[5], 255); // Casinfo
+  test.equal(packetWriter._toBuffer()[6], 255); // Casinfo
+  test.equal(packetWriter._toBuffer()[7], 255); // Casinfo
 
   test.equal(packetWriter._toBuffer()[8], CAS.CASFunctionCode.CAS_FC_LOB_NEW);
   test.equal(packetWriter._toBuffer()[12], 4);
@@ -30,12 +30,12 @@ exports['test_LOBNewPacket'] = function (test) {
                                  49, 51, 54, 50, 49, 51, 54, 54, 49, 51, 53, 52, 54, 48, 48, 48, 95, 48, 48, 52, 49, 0,
                                  0, 0, 0, 30, 0, 255, 255, 255, 0, 0, 0, 1, 0, 0, 0, 0, 1, 20, 0, 0, 0, 1, 0, 0, 22, 128,
                                  11, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]));
-  var lobHandle = lobnewPacket.parse(packetReader);
+  var lobHandle = lobnewPacket.parse(packetReader).result;
 
-  test.equal(lobnewPacket.casInfo[0], 1); //casInfo
-  test.equal(lobnewPacket.casInfo[1], 255); //casInfo
-  test.equal(lobnewPacket.casInfo[2], 255); //casInfo
-  test.equal(lobnewPacket.casInfo[3], 255); //casInfo
+  test.equal(lobnewPacket.casInfo[0], 1); // Casinfo
+  test.equal(lobnewPacket.casInfo[1], 255); // Casinfo
+  test.equal(lobnewPacket.casInfo[2], 255); // Casinfo
+  test.equal(lobnewPacket.casInfo[3], 255); // Casinfo
 
   test.equal(lobnewPacket.responseCode, 95);
   test.equal(lobnewPacket.errorCode, 0);

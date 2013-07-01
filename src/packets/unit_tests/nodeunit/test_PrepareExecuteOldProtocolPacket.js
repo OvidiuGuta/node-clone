@@ -19,12 +19,12 @@ exports['test_PrepareExecuteOldProtocolPacket'] = function (test) {
   var prepareExecuteOldProtocolPacket = new PrepareExecuteOldProtocolPacket(options);
 
   prepareExecuteOldProtocolPacket.writePrepare(packetWriter);
-  test.equal(packetWriter._toBuffer()[3], 34); //total length
+  test.equal(packetWriter._toBuffer()[3], 34); // Total length
 
-  test.equal(packetWriter._toBuffer()[4], 0); //casInfo
-  test.equal(packetWriter._toBuffer()[5], 255); //casInfo
-  test.equal(packetWriter._toBuffer()[6], 255); //casInfo
-  test.equal(packetWriter._toBuffer()[7], 255); //casInfo
+  test.equal(packetWriter._toBuffer()[4], 0); // Casinfo
+  test.equal(packetWriter._toBuffer()[5], 255); // Casinfo
+  test.equal(packetWriter._toBuffer()[6], 255); // Casinfo
+  test.equal(packetWriter._toBuffer()[7], 255); // Casinfo
 
   test.equal(packetWriter._toBuffer()[8], CAS.CASFunctionCode.CAS_FC_PREPARE);
   test.equal(packetWriter._toBuffer()[12], 19);
@@ -64,12 +64,12 @@ exports['test_PrepareExecuteOldProtocolPacket'] = function (test) {
   packetReader = new PacketReader();
   packetWriter = new PacketWriter();
   prepareExecuteOldProtocolPacket.writeExecute(packetWriter);
-  test.equal(packetWriter._toBuffer()[3], 69); //total length
+  test.equal(packetWriter._toBuffer()[3], 69); // Total length
 
-  test.equal(packetWriter._toBuffer()[4], 1); //casInfo
-  test.equal(packetWriter._toBuffer()[5], 255); //casInfo
-  test.equal(packetWriter._toBuffer()[6], 255); //casInfo
-  test.equal(packetWriter._toBuffer()[7], 255); //casInfo
+  test.equal(packetWriter._toBuffer()[4], 1); // Casinfo
+  test.equal(packetWriter._toBuffer()[5], 255); // Casinfo
+  test.equal(packetWriter._toBuffer()[6], 255); // Casinfo
+  test.equal(packetWriter._toBuffer()[7], 255); // Casinfo
 
   test.equal(packetWriter._toBuffer()[8], CAS.CASFunctionCode.CAS_FC_EXECUTE);
   test.equal(packetWriter._toBuffer()[16], 1);
@@ -92,7 +92,7 @@ exports['test_PrepareExecuteOldProtocolPacket'] = function (test) {
                                  5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 83, 0, 0, 0, 0, 7, 83, 105, 108, 118, 101, 114,
                                  0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 71, 0, 0, 0, 0, 5, 71, 111, 108, 100, 0]));
 
-  var resultSet = prepareExecuteOldProtocolPacket.parseExecute(packetReader);
+  var resultSet = prepareExecuteOldProtocolPacket.parseExecute(packetReader).resultSet;
 
   test.equal(resultSet, '{"ColumnNames":["s_name","f_name"],"ColumnDataTypes":["Char","String"],"RowsCount":6,"ColumnValues":[["X","Mixed"],["W","Woman"],["M","Man"],["B","Bronze"],["S","Silver"],["G","Gold"]]}');
   console.log('Unit test ended OK.');

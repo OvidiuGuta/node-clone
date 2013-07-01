@@ -28,14 +28,14 @@ function testFetchPacket() {
                                  4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 66, 0, 0, 0, 0, 7, 66, 114, 111, 110, 122, 101, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                  0, 0, 2, 83, 0, 0, 0, 0, 7, 83, 105, 108, 118, 101, 114, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 71, 0, 0, 0, 0, 5,
                                  71, 111, 108, 100, 0]));
-  var resultSet = executeQueryPacket.parse(packetReader);
+  var resultSet = executeQueryPacket.parse(packetReader).resultSet;
   assert.equal(resultSet, '{"ColumnNames":["s_name","f_name"],"ColumnDataTypes":["Char","String"],"RowsCount":6,"ColumnValues":[["X","Mixed"],["W","Woman"],["M","Man"],["B","Bronze"],["S","Silver"],["G","Gold"]]}');
 
   packetReader = new PacketReader();
   packetWriter = new PacketWriter();
   var fetchPacket = new FetchPacket(options);
   fetchPacket.write(packetWriter, executeQueryPacket);
-  assert.equal(packetWriter._toBuffer()[3], 38); //total length
+  assert.equal(packetWriter._toBuffer()[3], 38); // Total length
   assert.equal(packetWriter._toBuffer()[8], CAS.CASFunctionCode.CAS_FC_FETCH);
   assert.equal(packetWriter._toBuffer()[16], 4);
   assert.equal(packetWriter._toBuffer()[24], 7);
@@ -49,10 +49,10 @@ function testFetchPacket() {
                                  0, 0, 0, 0]));
   fetchPacket.parse(packetReader, executeQueryPacket);
 
-  assert.equal(fetchPacket.casInfo[0], 0); //casInfo
-  assert.equal(fetchPacket.casInfo[1], 255); //casInfo
-  assert.equal(fetchPacket.casInfo[2], 255); //casInfo
-  assert.equal(fetchPacket.casInfo[3], 255); //casInfo
+  assert.equal(fetchPacket.casInfo[0], 0); // CasInfo
+  assert.equal(fetchPacket.casInfo[1], 255); // CasInfo
+  assert.equal(fetchPacket.casInfo[2], 255); // CasInfo
+  assert.equal(fetchPacket.casInfo[3], 255); // CasInfo
 
   assert.equal(fetchPacket.responseCode, 0);
   assert.equal(fetchPacket.errorCode, 0);
